@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>logintest</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+
+<!-- 参考サイトとの変更箇所。アノテーションを使用したので、<servlet>と<servlet-mapping>を消去。 -->
+<security-constraint>
+    <web-resource-collection>
+      <web-resource-name>User Basic Auth</web-resource-name>
+      <url-pattern>/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>sales</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <login-config>
+    <auth-method>BASIC</auth-method>
+    <realm-name>User Basic Auth</realm-name>
+  </login-config>
+
+  <security-role>
+    <role-name>sales</role-name>
+  </security-role>
+
+</web-app>
